@@ -7,10 +7,27 @@
     justify-content: center;
     align-items: center;
   }
-  .trident { font-size: 2em; }
+  .trident { font-size: 5em; }
   </style>
 </head>
 <body>
   <div class="trident">🔱</div>
+  <script>
+var throttle = false;
+
+document.querySelector('div.trident').addEventListener('click', function (evt) {
+  var o = this,
+      ot = this.textContent;
+
+  if (!throttle && evt.detail === 3) {
+      this.textContent = 'Triple-clicked!';
+      throttle = true;
+      setTimeout(function () {
+          o.textContent = ot;
+          throttle = false;
+      }, 1000);
+  }
+});
+</script>
 </body>
 </html>
